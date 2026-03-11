@@ -74,7 +74,13 @@ export default function PreorderList() {
   }
 
   return (
-    <s-page heading="Preorder Notifications" max-width="1600px">
+    <>
+      <style>{`
+        s-page { --s-page-max-width: 100% !important; max-width: 100% !important; }
+        s-section { max-width: 100% !important; }
+        s-page > * { max-width: 100% !important; }
+      `}</style>
+    <s-page heading="Preorder Notifications">
       {/* Summary bar */}
       <s-section>
         <div style={{ display: "flex", gap: "24px", flexWrap: "wrap" }}>
@@ -190,6 +196,7 @@ export default function PreorderList() {
         </div>
       </s-section>
     </s-page>
+    </>
   );
 }
 
