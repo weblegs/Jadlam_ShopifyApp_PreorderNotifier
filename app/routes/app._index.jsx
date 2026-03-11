@@ -74,24 +74,23 @@ export default function PreorderList() {
   }
 
   return (
-    <>
-      <style>{`
-        s-page { --s-page-max-width: 100% !important; max-width: 100% !important; }
-        s-section { max-width: 100% !important; }
-        s-page > * { max-width: 100% !important; }
-      `}</style>
-    <s-page heading="Preorder Notifications">
+    <div style={{ padding: "20px 24px", fontFamily: "Inter, -apple-system, sans-serif" }}>
+      <h1 style={{ fontSize: "20px", fontWeight: 700, color: "#202223", marginBottom: "20px" }}>
+        Preorder Notifications
+      </h1>
+
       {/* Summary bar */}
-      <s-section>
+      <div style={{ background: "#fff", border: "1px solid #e1e3e5", borderRadius: "12px", padding: "20px", marginBottom: "20px" }}>
         <div style={{ display: "flex", gap: "24px", flexWrap: "wrap" }}>
           <StatCard label="Total Entries" value={total} />
           <StatCard label="This Page" value={entries.length} />
           <StatCard label="Page" value={`${page} / ${totalPages || 1}`} />
         </div>
-      </s-section>
+      </div>
 
       {/* Search + table */}
-      <s-section heading="Entries">
+      <div style={{ background: "#fff", border: "1px solid #e1e3e5", borderRadius: "12px", padding: "20px" }}>
+        <h2 style={{ fontSize: "14px", fontWeight: 600, color: "#202223", marginBottom: "16px" }}>Entries</h2>
         {/* Search */}
         <div style={{ marginBottom: "16px" }}>
           <input
@@ -194,9 +193,8 @@ export default function PreorderList() {
         <div style={{ textAlign: "center", color: "#6d7175", fontSize: "13px", marginTop: "12px" }}>
           Showing {(page - 1) * pageSize + 1}–{Math.min(page * pageSize, total)} of {total} entries
         </div>
-      </s-section>
-    </s-page>
-    </>
+      </div>
+    </div>
   );
 }
 
