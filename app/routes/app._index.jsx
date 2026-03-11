@@ -74,7 +74,7 @@ export default function PreorderList() {
   }
 
   return (
-    <div style={{ padding: "20px 24px", fontFamily: "Inter, -apple-system, sans-serif" }}>
+    <div style={{ padding: "20px 24px", fontFamily: "Inter, -apple-system, sans-serif", maxWidth: "80%", margin: "0 auto" }}>
       <h1 style={{ fontSize: "20px", fontWeight: 700, color: "#202223", marginBottom: "20px" }}>
         Preorder Notifications
       </h1>
