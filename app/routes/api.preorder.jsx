@@ -25,9 +25,11 @@ export const action = async ({ request }) => {
       );
     }
 
-    const origin = request.headers.get("Origin") ?? "";
-    const shopMatch = origin.match(/https?:\/\/([^/]+)/);
-    const shop = shopMatch?.[1] ?? "unknown";
+    const shop = formData.get("shop") || (() => {
+      const origin = request.headers.get("Origin") ?? "";
+      const shopMatch = origin.match(/https?:\/\/([^/]+)/);
+      return shopMatch?.[1] ?? "unknown";
+    })();
 
     await db.preorderData.create({
       data: {
