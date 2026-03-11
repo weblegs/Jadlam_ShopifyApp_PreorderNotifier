@@ -7,16 +7,16 @@ const CORS_HEADERS = {
 };
 
 export const action = async ({ request }) => {
-  if (request.method === "OPTIONS") {
-    return new Response(null, { status: 204, headers: CORS_HEADERS });
-  }
-
   if (request.method !== "POST") {
     return new Response("Method not allowed", { status: 405, headers: CORS_HEADERS });
   }
 
   try {
-    const { email, title, vendor, sku } = await request.json();
+    const formData = await request.formData();
+    const email = formData.get("email");
+    const title = formData.get("title");
+    const vendor = formData.get("vendor");
+    const sku = formData.get("sku");
 
     if (!email) {
       return Response.json(
@@ -25,7 +25,6 @@ export const action = async ({ request }) => {
       );
     }
 
-    // Identify the shop from the storefront origin (e.g. https://mystore.myshopify.com)
     const origin = request.headers.get("Origin") ?? "";
     const shopMatch = origin.match(/https?:\/\/([^/]+)/);
     const shop = shopMatch?.[1] ?? "unknown";
